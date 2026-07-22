@@ -482,13 +482,15 @@ function Index() {
   ];
 
   const marqueeItems = [
-    "TAKE FROM THE RICH",
+    "100% FEATHER TOKEN",
     "◆",
-    "GIVE TO THE POOR",
+    "NO UTILITY",
     "◆",
-    "$FEATHER",
+    "NO CABAL",
     "◆",
-    "ONE FEATHER AT A TIME",
+    "NO OWNER",
+    "◆",
+    "NO ROADMAP",
     "◆",
   ];
 
