@@ -529,7 +529,7 @@ function Index() {
               One feather won't change the world. Millions of feathers might, one feather at a time.
             </p>
             <p className="mt-3 text-xs uppercase tracking-[0.2em] text-muted-green">
-              $FEATHER · The legend rides again
+              $FEATHER - The symbol of Robinhood
             </p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
