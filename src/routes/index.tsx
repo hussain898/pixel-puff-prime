@@ -506,8 +506,8 @@ function Index() {
       <Nav />
 
       {/* HERO */}
-      <header className="relative flex min-h-screen items-center justify-center px-[6vw] pt-32 pb-20">
-        <div className="grid w-full max-w-[1400px] items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <header className="relative flex min-h-screen items-center justify-center overflow-x-hidden px-4 pt-32 pb-20 sm:px-[6vw]">
+        <div className="grid w-full max-w-[1180px] items-center justify-items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(420px,0.85fr)] lg:justify-items-stretch lg:gap-10">
           {/* Left: copy + CTAs + CA */}
           <div className="text-center lg:text-left">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-rh-green">
@@ -562,7 +562,7 @@ function Index() {
           </div>
 
           {/* Right: live chart */}
-          <div className="mx-auto w-full max-w-[min(100%,540px)] lg:mx-0 lg:max-w-none">
+          <div className="w-full max-w-[calc(100vw-2rem)] justify-self-center sm:max-w-[540px] lg:max-w-none lg:justify-self-stretch">
             <LiveDexPanel {...livePair} compact />
             <div className="mt-4 text-center lg:text-left">
               <a
