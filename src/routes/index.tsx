@@ -289,7 +289,7 @@ function Index() {
   ];
 
   return (
-    <div id="top" className="relative min-h-screen">
+    <div id="top" className="relative min-h-screen overflow-x-hidden">
       {/* ambient backgrounds */}
       <div className="fixed inset-0 -z-[2] bg-hero-radial" />
       <div className="fixed inset-0 -z-[1] bg-grid-glow opacity-[0.14] pointer-events-none" />
