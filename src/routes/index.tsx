@@ -402,7 +402,7 @@ function Index() {
               <div className="relative h-[300px] w-full sm:h-[360px] md:h-[420px] lg:h-[460px]">
                 <iframe
                   title="Dexscreener $FEATHER live chart"
-                  src="https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
+                  src="https://dexscreener.com/robinhood/0x72d74dAd7135d5e183A3d3FBE1E8358bBC143A9b?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
                   className="absolute inset-0 h-full w-full border-0"
                   allow="clipboard-write"
                 />
@@ -578,7 +578,7 @@ function Index() {
           <div className="relative h-[420px] w-full sm:h-[460px] md:h-[520px] lg:h-[600px]">
             <iframe
               title="Dexscreener $FEATHER live chart"
-              src="https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
+              src="https://dexscreener.com/robinhood/0x72d74dAd7135d5e183A3d3FBE1E8358bBC143A9b?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
               className="absolute inset-0 h-full w-full border-0"
               allow="clipboard-write"
             />
