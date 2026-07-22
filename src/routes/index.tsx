@@ -608,8 +608,8 @@ function Index() {
               one of the defining cultural symbols of the Robinhood ecosystem.
             </p>
             <p className="mb-4 text-[1.05rem] text-[#c4ddc8]">
-              As an independent community, we chose to rally around the feather itself, a timeless
-              symbol that inspires creativity, participation, and opportunity.
+              Robinhood created a new blockchain. We believe the feather has potential to become one
+              of the defining cultural symbols of the Robinhood ecosystem.
             </p>
             <p className="mb-6 font-display font-semibold text-gold-bright">
               Through memes, art, community participation, and internet culture, $FEATHER exists to
