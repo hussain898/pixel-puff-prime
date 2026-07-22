@@ -122,7 +122,7 @@ function FeatherSVG({ className = "" }: { className?: string }) {
 function FallingFeathers() {
   const feathers = useMemo(
     () =>
-      Array.from({ length: 20 }).map((_, i) => ({
+      Array.from({ length: 8 }).map((_, i) => ({
         left: Math.random() * 100,
         size: 16 + Math.random() * 30,
         duration: 14 + Math.random() * 18,
@@ -206,7 +206,7 @@ function DisclaimerModal({ onContinue }: { onContinue: () => void }) {
           onClick={onContinue}
           className="w-full shrink-0 rounded-full bg-rh-green px-6 py-3 text-sm sm:text-base font-bold text-[#03120a] shadow-[0_10px_30px_rgba(0,200,5,0.35)] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(0,200,5,0.45)] transition"
         >
-          Continue
+          I agree
         </button>
       </div>
     </div>
