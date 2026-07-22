@@ -562,7 +562,7 @@ function Index() {
           </div>
 
           {/* Right: live chart */}
-          <div className="w-full">
+          <div className="mx-auto w-full max-w-[min(100%,540px)] lg:mx-0 lg:max-w-none">
             <LiveDexPanel {...livePair} compact />
             <div className="mt-4 text-center lg:text-left">
               <a
