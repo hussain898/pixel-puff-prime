@@ -38,6 +38,8 @@ export const Route = createFileRoute("/")({
 const CA = "0x72081aDC58bdb794b989d424a65948c16848600d";
 const DEX_URL =
   "https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b";
+const TWITTER_URL = "https://x.com/featherrhc?s=21";
+const TELEGRAM_URL = "https://t.me/Official_Feather";
 
 function FeatherSVG({ className = "" }: { className?: string }) {
   return (
