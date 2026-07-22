@@ -531,6 +531,41 @@ function Index() {
         </div>
       </section>
 
+      {/* LIVE CHART */}
+      <section id="chart" className="mx-auto max-w-[1200px] px-[6vw] py-24">
+        <div className="text-center">
+          <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.25em] text-rh-green">
+            Live Chart
+          </div>
+          <h2 className="mb-4 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
+            $FEATHER in real time.
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-[15px] leading-relaxed text-muted-green">
+            Live price, volume and trades straight from Dexscreener. Updates automatically.
+          </p>
+        </div>
+        <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-black/40 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
+          <div className="relative w-full" style={{ paddingBottom: "125%" }}>
+            <iframe
+              title="Dexscreener $FEATHER live chart"
+              src="https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b?embed=1&theme=dark&trades=0&info=0"
+              className="absolute inset-0 h-full w-full border-0"
+              allow="clipboard-write"
+            />
+          </div>
+        </div>
+        <div className="mt-6 text-center">
+          <a
+            href={DEX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/10 px-5 py-2 text-sm font-semibold text-rh-green transition hover:bg-rh-green/20"
+          >
+            Open full chart on Dexscreener ↗
+          </a>
+        </div>
+      </section>
+
       {/* HOW TO BUY */}
       <section id="buy" className="mx-auto max-w-[1200px] px-[6vw] py-24 text-center">
         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/[0.12] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-gold-bright">
