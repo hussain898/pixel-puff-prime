@@ -504,6 +504,7 @@ function Nav() {
 function Index() {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const livePair = useLiveDexPair();
   useEffect(() => {
     if (!copied) return;
     const t = setTimeout(() => setCopied(false), 1600);
@@ -648,16 +649,7 @@ function Index() {
 
           {/* Right: live chart */}
           <div className="w-full">
-            <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-black/40 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
-              <div className="relative h-[300px] w-full sm:h-[360px] md:h-[420px] lg:h-[460px]">
-                <iframe
-                  title="Dexscreener $FEATHER live chart"
-                  src="https://dexscreener.com/robinhood/0x72d74dAd7135d5e183A3d3FBE1E8358bBC143A9b?embed=1&theme=dark&trades=0&info=0"
-                  className="absolute inset-0 h-full w-full border-0"
-                  allow="clipboard-write"
-                />
-              </div>
-            </div>
+            <LiveDexPanel {...livePair} compact />
             <div className="mt-4 text-center lg:text-left">
               <a
                 href={DEX_URL}
@@ -824,16 +816,7 @@ function Index() {
             Live price, volume and trades straight from Dexscreener. Updates automatically.
           </p>
         </div>
-        <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-black/40 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
-          <div className="relative h-[420px] w-full sm:h-[460px] md:h-[520px] lg:h-[600px]">
-            <iframe
-              title="Dexscreener $FEATHER live chart"
-              src="https://dexscreener.com/robinhood/0x72d74dAd7135d5e183A3d3FBE1E8358bBC143A9b?embed=1&theme=dark&trades=0&info=0"
-              className="absolute inset-0 h-full w-full border-0"
-              allow="clipboard-write"
-            />
-          </div>
-        </div>
+        <LiveDexPanel {...livePair} />
         <div className="mt-6 text-center">
           <a
             href={DEX_URL}
