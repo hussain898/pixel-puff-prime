@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import logoAsset from "@/assets/feather-logo.png.asset.json";
 
 function Logo({ className = "" }: { className?: string }) {
@@ -38,8 +38,47 @@ export const Route = createFileRoute("/")({
 const CA = "0x72081aDC58bdb794b989d424a65948c16848600d";
 const DEX_URL =
   "https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b";
+const DEX_API_URL =
+  "https://api.dexscreener.com/latest/dex/pairs/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b";
 const TWITTER_URL = "https://x.com/featherrhc?s=21";
 const TELEGRAM_URL = "https://t.me/Official_Feather";
+
+type DexPair = {
+  url: string;
+  dexId: string;
+  labels?: string[];
+  priceUsd?: string;
+  priceNative?: string;
+  marketCap?: number;
+  fdv?: number;
+  volume?: { h24?: number; h6?: number; h1?: number; m5?: number };
+  priceChange?: { h24?: number; h6?: number; h1?: number; m5?: number };
+  liquidity?: { usd?: number; base?: number; quote?: number };
+  txns?: {
+    h24?: { buys?: number; sells?: number };
+    h6?: { buys?: number; sells?: number };
+    h1?: { buys?: number; sells?: number };
+    m5?: { buys?: number; sells?: number };
+  };
+  baseToken?: { symbol?: string; name?: string };
+  quoteToken?: { symbol?: string; name?: string };
+};
+
+type DexPairResponse = {
+  pair?: DexPair;
+  pairs?: DexPair[];
+};
+
+const FALLING_FEATHERS = [
+  { left: 7, size: 22, duration: 26, delay: 2, sway: 16, swayDuration: 5, key: 0 },
+  { left: 21, size: 34, duration: 31, delay: 11, sway: 28, swayDuration: 7, key: 1 },
+  { left: 36, size: 18, duration: 23, delay: 5, sway: 20, swayDuration: 4.5, key: 2 },
+  { left: 52, size: 42, duration: 34, delay: 14, sway: 34, swayDuration: 7.5, key: 3 },
+  { left: 68, size: 24, duration: 28, delay: 8, sway: 18, swayDuration: 5.5, key: 4 },
+  { left: 81, size: 31, duration: 30, delay: 16, sway: 26, swayDuration: 6.5, key: 5 },
+  { left: 93, size: 20, duration: 25, delay: 3, sway: 22, swayDuration: 5, key: 6 },
+  { left: 44, size: 27, duration: 29, delay: 19, sway: 30, swayDuration: 6, key: 7 },
+];
 
 function FeatherSVG({ className = "" }: { className?: string }) {
   return (
