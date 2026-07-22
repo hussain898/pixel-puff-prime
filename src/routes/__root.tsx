@@ -77,10 +77,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "$FEATHER" },
+      { property: "og:title", content: "$FEATHER" },
+      { name: "twitter:title", content: "$FEATHER" },
+      { name: "description", content: "$FEATHER — One feather won’t change the world. Millions of feathers might, one feather at a time." },
+      { property: "og:description", content: "$FEATHER — One feather won’t change the world. Millions of feathers might, one feather at a time." },
+      { name: "twitter:description", content: "$FEATHER — One feather won’t change the world. Millions of feathers might, one feather at a time." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/lpisAonr0rcyJbyeZ4NksBjSKdv2/social-images/social-1784758481223-IMG_1072.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/lpisAonr0rcyJbyeZ4NksBjSKdv2/social-images/social-1784758481223-IMG_1072.webp" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

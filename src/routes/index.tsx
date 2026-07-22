@@ -16,17 +16,17 @@ function Logo({ className = "" }: { className?: string }) {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "$FEATHER — Take from the Rich. Give to the Poor." },
+      { title: "$FEATHER" },
       {
         name: "description",
         content:
-          "$FEATHER — the outlaw of Robinhood Chain. Take from the rich, give to the poor. The people's coin.",
+          "$FEATHER — One feather won’t change the world. Millions of feathers might, one feather at a time.",
       },
-      { property: "og:title", content: "$FEATHER — The People's Coin" },
+      { property: "og:title", content: "$FEATHER" },
       {
         property: "og:description",
         content:
-          "One feather won't change the world. Millions of feathers might, one feather at a time.",
+          "$FEATHER — One feather won’t change the world. Millions of feathers might, one feather at a time.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
