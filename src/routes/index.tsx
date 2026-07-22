@@ -621,7 +621,7 @@ function Index() {
           Join the Flock
         </div>
         <h2 className="mb-8 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
-          Join the flock.
+          PLANT A FEATHER
         </h2>
         <div className="mx-auto max-w-[720px] space-y-5 text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
           <p>
