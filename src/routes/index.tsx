@@ -622,10 +622,10 @@ function Index() {
       {/* PLANT */}
       <section id="plant" className="mx-auto max-w-[1000px] px-[6vw] py-24 text-center">
         <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.25em] text-rh-green">
-          Plant a Feather
+          Join the Flock
         </div>
         <h2 className="mb-8 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
-          Plant a feather.
+          Join the flock.
         </h2>
         <div className="mx-auto max-w-[720px] space-y-5 text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
           <p>
