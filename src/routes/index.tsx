@@ -488,7 +488,7 @@ function Index() {
 
       {/* FOOTER */}
       <footer id="community" className="px-[6vw] py-16 text-center">
-        <FeatherSVG className="mx-auto w-14 opacity-70" />
+        <Logo className="mx-auto w-14 opacity-70" />
         <p className="mt-4 tracking-wider text-muted-green">Take from the rich. Give to the poor.</p>
         <div className="my-8 flex flex-wrap justify-center gap-4">
           <a
