@@ -546,7 +546,7 @@ function Index() {
           </p>
         </div>
         <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-black/40 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
-          <div className="relative w-full" style={{ paddingBottom: "125%" }}>
+          <div className="relative h-[420px] w-full sm:h-[460px] md:h-[520px] lg:h-[600px]">
             <iframe
               title="Dexscreener $FEATHER live chart"
               src="https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
