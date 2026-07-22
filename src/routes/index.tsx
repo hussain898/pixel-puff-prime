@@ -155,8 +155,17 @@ function FallingFeathers() {
               transform: `translateX(${f.sway}px)`,
             }}
           >
-            <FeatherSVG className="w-full h-auto" />
+            <img
+              src={logoAsset.src}
+              alt=""
+              className="w-full h-auto"
+              style={{
+                filter:
+                  "brightness(0) saturate(100%) invert(58%) sepia(93%) saturate(2400%) hue-rotate(85deg) brightness(105%) contrast(105%)",
+              }}
+            />
           </div>
+
         </div>
       ))}
     </div>
