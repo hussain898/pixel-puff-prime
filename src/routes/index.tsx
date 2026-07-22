@@ -341,55 +341,84 @@ function Index() {
       <Nav />
 
       {/* HERO */}
-      <header className="relative flex min-h-screen flex-col items-center justify-center px-[6vw] pt-32 pb-20 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-rh-green">
-          <span className="animate-pulse-dot h-1.5 w-1.5 rounded-full bg-rh-green shadow-[0_0_10px_var(--rh-green)]" />
-          Live on Robinhood Chain
-        </div>
+      <header className="relative flex min-h-screen items-center justify-center px-[6vw] pt-32 pb-20">
+        <div className="grid w-full max-w-[1400px] items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          {/* Left: copy + CTAs + CA */}
+          <div className="text-center lg:text-left">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-rh-green">
+              <span className="animate-pulse-dot h-1.5 w-1.5 rounded-full bg-rh-green shadow-[0_0_10px_var(--rh-green)]" />
+              Live on Robinhood Chain
+            </div>
 
-        <Logo className="animate-float mx-auto w-[min(230px,42vw)] drop-shadow-[0_12px_40px_rgba(0,200,5,0.5)]" />
+            <Logo className="animate-float mx-auto lg:mx-0 w-[min(230px,42vw)] drop-shadow-[0_12px_40px_rgba(0,200,5,0.5)]" />
 
-        <h1 className="mt-2 font-display font-black leading-[0.98] tracking-wide text-[clamp(2.6rem,8vw,6.2rem)]">
-          THE PEOPLE'S
-          <br />
-          <span className="text-gradient-gold-green">COIN</span>
-        </h1>
+            <h1 className="mt-2 font-display font-black leading-[0.98] tracking-wide text-[clamp(2.6rem,8vw,6.2rem)]">
+              THE PEOPLE'S
+              <br />
+              <span className="text-gradient-gold-green">COIN</span>
+            </h1>
 
-        <p className="mt-4 max-w-2xl text-[clamp(1rem,2.4vw,1.4rem)] font-medium text-paper/85">
-          One feather won't change the world. Millions of feathers might, one feather at a time.
-        </p>
-        <p className="mt-3 text-xs uppercase tracking-[0.2em] text-muted-green">
-          $FEATHER · The legend rides again
-        </p>
+            <p className="mt-4 max-w-2xl text-[clamp(1rem,2.4vw,1.4rem)] font-medium text-paper/85 lg:max-w-lg">
+              One feather won't change the world. Millions of feathers might, one feather at a time.
+            </p>
+            <p className="mt-3 text-xs uppercase tracking-[0.2em] text-muted-green">
+              $FEATHER · The legend rides again
+            </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a
-            href="#buy"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-gold-bright to-gold px-6 py-3 font-bold text-[#241a00] shadow-[0_10px_30px_rgba(232,185,35,0.35)] hover:-translate-y-0.5 transition"
-          >
-            🪶 Buy $FEATHER
-          </a>
-          <a
-            href={DEX_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-rh-green bg-transparent px-6 py-3 font-bold text-rh-green hover:bg-rh-green/10 transition"
-          >
-            📈 View Chart
-          </a>
-        </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+              <a
+                href="#buy"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-gold-bright to-gold px-6 py-3 font-bold text-[#241a00] shadow-[0_10px_30px_rgba(232,185,35,0.35)] hover:-translate-y-0.5 transition"
+              >
+                🪶 Buy $FEATHER
+              </a>
+              <a
+                href={DEX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-rh-green bg-transparent px-6 py-3 font-bold text-rh-green hover:bg-rh-green/10 transition"
+              >
+                📈 View Chart
+              </a>
+            </div>
 
-        <div className="mt-8 flex w-full max-w-[92vw] items-center gap-2 sm:gap-3 rounded-xl border border-dashed border-rh-green/45 bg-black/40 px-3 sm:px-4 py-3 sm:w-auto">
-          <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-rh-green">CA</span>
-          <code className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[12px] sm:text-[13.5px] text-paper/90">
-            {CA}
-          </code>
-          <button
-            onClick={copyCA}
-            className="shrink-0 rounded-md bg-rh-green px-3 py-1.5 text-xs font-bold text-[#03120a] hover:brightness-110"
-          >
-            {copied ? "COPIED" : "COPY"}
-          </button>
+            <div className="mt-8 flex w-full max-w-[92vw] items-center gap-2 sm:gap-3 rounded-xl border border-dashed border-rh-green/45 bg-black/40 px-3 sm:px-4 py-3 lg:max-w-none">
+              <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-rh-green">CA</span>
+              <code className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[12px] sm:text-[13.5px] text-paper/90">
+                {CA}
+              </code>
+              <button
+                onClick={copyCA}
+                className="shrink-0 rounded-md bg-rh-green px-3 py-1.5 text-xs font-bold text-[#03120a] hover:brightness-110"
+              >
+                {copied ? "COPIED" : "COPY"}
+              </button>
+            </div>
+          </div>
+
+          {/* Right: live chart */}
+          <div className="w-full">
+            <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-black/40 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
+              <div className="relative h-[300px] w-full sm:h-[360px] md:h-[420px] lg:h-[460px]">
+                <iframe
+                  title="Dexscreener $FEATHER live chart"
+                  src="https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"
+                  className="absolute inset-0 h-full w-full border-0"
+                  allow="clipboard-write"
+                />
+              </div>
+            </div>
+            <div className="mt-4 text-center lg:text-left">
+              <a
+                href={DEX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-muted-green transition hover:text-rh-green"
+              >
+                Open full chart on Dexscreener ↗
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
