@@ -615,12 +615,6 @@ function Index() {
               Through memes, art, community participation, and internet culture, $FEATHER exists to
               celebrate that idea.
             </p>
-            <a
-              href="#plant"
-              className="inline-flex items-center gap-2 rounded-full bg-rh-green px-5 py-3 font-bold text-[#03120a] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,200,5,0.45)] transition"
-            >
-              Plant a Feather
-            </a>
           </div>
           <div className="relative flex justify-center">
             <div className="absolute inset-0 -z-10 rounded-full bg-gradient-radial from-gold/20 via-transparent to-transparent blur-3xl" />
