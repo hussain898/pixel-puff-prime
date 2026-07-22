@@ -243,7 +243,7 @@ function Index() {
           Live on Robinhood Chain
         </div>
 
-        <FeatherSVG className="animate-float mx-auto w-[min(230px,42vw)] drop-shadow-[0_12px_40px_rgba(0,200,5,0.5)]" />
+        <Logo className="animate-float mx-auto w-[min(230px,42vw)] drop-shadow-[0_12px_40px_rgba(0,200,5,0.5)]" />
 
         <h1 className="mt-2 font-display font-black leading-[0.98] tracking-wide text-[clamp(2.6rem,8vw,6.2rem)]">
           THE PEOPLE'S
