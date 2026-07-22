@@ -717,31 +717,6 @@ function Index() {
         </div>
       </section>
 
-      {/* LIVE CHART */}
-      <section id="chart" className="mx-auto max-w-[1200px] px-[6vw] py-24">
-        <div className="text-center">
-          <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.25em] text-rh-green">
-            Live Chart
-          </div>
-          <h2 className="mb-4 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
-            $FEATHER in real time.
-          </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-[15px] leading-relaxed text-muted-green">
-            Live price, volume and trades straight from Dexscreener. Updates automatically.
-          </p>
-        </div>
-        <LiveDexPanel {...livePair} />
-        <div className="mt-6 text-center">
-          <a
-            href={DEX_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/10 px-5 py-2 text-sm font-semibold text-rh-green transition hover:bg-rh-green/20"
-          >
-            Open full chart on Dexscreener ↗
-          </a>
-        </div>
-      </section>
 
       {/* HOW TO BUY */}
       <section id="buy" className="mx-auto max-w-[1200px] px-[6vw] py-24 text-center">
