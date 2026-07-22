@@ -458,6 +458,14 @@ function Index() {
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <a
+            href="https://wallet.uniswap.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-rh-green px-6 py-3 font-bold text-[#03120a] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,200,5,0.45)] transition"
+          >
+            🦄 Buy in Uniswap Wallet
+          </a>
+          <a
             href={DEX_URL}
             target="_blank"
             rel="noopener noreferrer"
