@@ -122,7 +122,7 @@ function FeatherSVG({ className = "" }: { className?: string }) {
 function FallingFeathers() {
   const feathers = useMemo(
     () =>
-      Array.from({ length: 20 }).map((_, i) => ({
+      Array.from({ length: 8 }).map((_, i) => ({
         left: Math.random() * 100,
         size: 16 + Math.random() * 30,
         duration: 14 + Math.random() * 18,
