@@ -126,7 +126,7 @@ function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-4 backdrop-blur-md bg-gradient-to-b from-[rgba(3,12,7,0.9)] to-transparent">
       <a href="#top" className="flex items-center gap-3 font-display font-black tracking-widest text-lg">
-        <FeatherSVG className="h-8 w-auto drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
+        <Logo className="h-8 w-auto drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
         <span>
           $<span className="text-rh-green [text-shadow:0_0_18px_rgba(0,200,5,0.7)]">FEATHER</span>
         </span>
