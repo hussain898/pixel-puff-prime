@@ -156,7 +156,7 @@ function FallingFeathers() {
             }}
           >
             <img
-              src={logoAsset.src}
+              src={logoAsset.url}
               alt=""
               className="w-full h-auto"
               style={{
