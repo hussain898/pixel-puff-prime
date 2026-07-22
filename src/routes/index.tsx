@@ -218,6 +218,7 @@ function Nav() {
     { href: "#legend", label: "The Legend" },
     { href: "#meaning", label: "Why a Feather" },
     { href: "#tokenomics", label: "Tokenomics" },
+    { href: "#chart", label: "Chart" },
     { href: "#buy", label: "How to Buy" },
     { href: "#community", label: "Community" },
   ];
