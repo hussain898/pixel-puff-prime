@@ -199,6 +199,229 @@ function FallingFeathers() {
   );
 }
 
+function formatUsd(value?: number | string, maximumFractionDigits = 2) {
+  const n = typeof value === "string" ? Number(value) : value;
+  if (!Number.isFinite(n)) return "—";
+  if ((n ?? 0) > 0 && (n ?? 0) < 0.01) {
+    return `$${(n ?? 0).toLocaleString("en-US", {
+      minimumFractionDigits: 6,
+      maximumFractionDigits: 8,
+    })}`;
+  }
+  return `$${(n ?? 0).toLocaleString("en-US", { maximumFractionDigits })}`;
+}
+
+function formatCompact(value?: number) {
+  if (!Number.isFinite(value)) return "—";
+  return new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 2,
+  }).format(value ?? 0);
+}
+
+function formatPercent(value?: number) {
+  if (!Number.isFinite(value)) return "—";
+  const sign = (value ?? 0) > 0 ? "+" : "";
+  return `${sign}${(value ?? 0).toFixed(2)}%`;
+}
+
+function useLiveDexPair() {
+  const [pair, setPair] = useState<DexPair | null>(null);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const loadPair = async () => {
+      try {
+        const response = await fetch(DEX_API_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error("Dexscreener feed unavailable");
+        const data = (await response.json()) as DexPairResponse;
+        const nextPair = data.pair ?? data.pairs?.[0] ?? null;
+        if (!cancelled && nextPair) {
+          setPair(nextPair);
+          setLastUpdated(new Date());
+          setHasError(false);
+        }
+      } catch {
+        if (!cancelled) setHasError(true);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    };
+
+    loadPair();
+    const timer = window.setInterval(loadPair, 15000);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
+  }, []);
+
+  return { pair, lastUpdated, isLoading, hasError };
+}
+
+function buildSparklinePoints(pair: DexPair | null, width = 560, height = 220) {
+  const change = pair?.priceChange?.h24 ?? pair?.priceChange?.h6 ?? 0;
+  const h6 = pair?.priceChange?.h6 ?? change;
+  const h1 = pair?.priceChange?.h1 ?? h6;
+  const m5 = pair?.priceChange?.m5 ?? h1;
+  const volatility = Math.min(28, Math.max(8, Math.abs(h6) + Math.abs(h1) * 1.6 + Math.abs(m5) * 2));
+  const trend = Math.max(-38, Math.min(38, change));
+  const count = 34;
+
+  return Array.from({ length: count }, (_, i) => {
+    const t = i / (count - 1);
+    const x = 18 + t * (width - 36);
+    const wave = Math.sin(i * 1.15 + trend / 7) * volatility * 0.55 + Math.cos(i * 0.47) * volatility * 0.28;
+    const y = height * 0.58 - trend * t * 1.45 + wave;
+    const clampedY = Math.max(22, Math.min(height - 24, y));
+    return `${x.toFixed(1)},${clampedY.toFixed(1)}`;
+  }).join(" ");
+}
+
+function StatPill({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
+  return (
+    <div className="rounded-xl border border-rh-green/20 bg-black/30 p-3">
+      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-muted-green">{label}</div>
+      <div className={`mt-1 font-display text-lg font-black ${accent ? "text-rh-green" : "text-paper"}`}>
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function LiveDexPanel({
+  pair,
+  lastUpdated,
+  isLoading,
+  hasError,
+  compact = false,
+}: {
+  pair: DexPair | null;
+  lastUpdated: Date | null;
+  isLoading: boolean;
+  hasError: boolean;
+  compact?: boolean;
+}) {
+  const change = pair?.priceChange?.h24;
+  const isPositive = (change ?? 0) >= 0;
+  const buys = pair?.txns?.h24?.buys ?? 0;
+  const sells = pair?.txns?.h24?.sells ?? 0;
+  const points = buildSparklinePoints(pair, 560, compact ? 190 : 220);
+  const areaPath = `M ${points.split(" ")[0]} L ${points} L 542,${compact ? 184 : 214} L 18,${compact ? 184 : 214} Z`;
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-[#041009]/90 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,200,5,0.18),transparent_48%)]" />
+      <div className="relative p-4 sm:p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-rh-green">
+              Live Dexscreener Feed
+            </div>
+            <div className="mt-1 font-display text-2xl font-black text-paper sm:text-3xl">
+              {pair?.baseToken?.symbol ?? "FEATHER"}/{pair?.quoteToken?.symbol ?? "WETH"}
+            </div>
+            <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-green">
+              {pair?.dexId ?? "Uniswap"} {pair?.labels?.[0] ? `· ${pair.labels[0]}` : ""}
+            </div>
+          </div>
+          <a
+            href={DEX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/10 px-4 py-2 text-xs font-bold text-rh-green transition hover:bg-rh-green/20"
+          >
+            Dexscreener ↗
+          </a>
+        </div>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-4">
+          <StatPill label="Price" value={isLoading && !pair ? "Loading" : formatUsd(pair?.priceUsd, 8)} accent />
+          <StatPill label="24H" value={formatPercent(change)} accent={isPositive} />
+          <StatPill label="Market Cap" value={`$${formatCompact(pair?.marketCap ?? pair?.fdv)}`} />
+          <StatPill label="Liquidity" value={`$${formatCompact(pair?.liquidity?.usd)}`} />
+        </div>
+
+        <div className="mt-4 overflow-hidden rounded-xl border border-rh-green/20 bg-[#07110d]">
+          <svg
+            viewBox={`0 0 560 ${compact ? 190 : 220}`}
+            className={`h-[220px] w-full sm:h-[260px] ${compact ? "lg:h-[250px]" : "lg:h-[320px]"}`}
+            role="img"
+            aria-label="$FEATHER live market line"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="liveLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#E8B923" />
+                <stop offset="0.55" stopColor="#00C805" />
+                <stop offset="1" stopColor="#C8FF7B" />
+              </linearGradient>
+              <linearGradient id="liveArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#00C805" stopOpacity="0.26" />
+                <stop offset="1" stopColor="#00C805" stopOpacity="0" />
+              </linearGradient>
+              <filter id="lineGlow" x="-20%" y="-80%" width="140%" height="260%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+            {Array.from({ length: 7 }).map((_, i) => (
+              <line
+                key={`h-${i}`}
+                x1="0"
+                x2="560"
+                y1={18 + i * ((compact ? 154 : 184) / 6)}
+                y2={18 + i * ((compact ? 154 : 184) / 6)}
+                stroke="rgba(143,183,154,0.16)"
+                strokeWidth="1"
+              />
+            ))}
+            {Array.from({ length: 8 }).map((_, i) => (
+              <line
+                key={`v-${i}`}
+                y1="0"
+                y2={compact ? 190 : 220}
+                x1={i * 80}
+                x2={i * 80}
+                stroke="rgba(143,183,154,0.1)"
+                strokeWidth="1"
+              />
+            ))}
+            <path d={areaPath} fill="url(#liveArea)" />
+            <polyline points={points} fill="none" stroke="url(#liveLine)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" filter="url(#lineGlow)" />
+            <circle cx={points.split(" ").at(-1)?.split(",")[0]} cy={points.split(" ").at(-1)?.split(",")[1]} r="5" fill="#E8B923" />
+          </svg>
+        </div>
+
+        <div className="mt-4 grid gap-3 text-sm text-muted-green sm:grid-cols-3">
+          <div className="rounded-xl bg-black/20 px-4 py-3">
+            <span className="text-paper">24h Volume</span> ${formatCompact(pair?.volume?.h24)}
+          </div>
+          <div className="rounded-xl bg-black/20 px-4 py-3">
+            <span className="text-paper">24h Buys</span> {buys.toLocaleString()}
+          </div>
+          <div className="rounded-xl bg-black/20 px-4 py-3">
+            <span className="text-paper">24h Sells</span> {sells.toLocaleString()}
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-green">
+          <span className={hasError ? "text-gold-bright" : "text-rh-green"}>
+            {hasError ? "Reconnecting to Dexscreener" : "● Live"}
+          </span>
+          <span>{lastUpdated ? `Updated ${lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}` : "Waiting for feed"}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DisclaimerModal({ onContinue }: { onContinue: () => void }) {
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-[#020805]/90 p-4 backdrop-blur-sm">
