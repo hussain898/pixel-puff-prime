@@ -189,7 +189,7 @@ function Index() {
     {
       n: 5,
       title: "Swap for $FEATHER",
-      body: "Paste the contract below, confirm the swap, and you're holding $FEATHER. Welcome to the band.",
+      body: "Paste the contract below, confirm the swap, and you're holding $FEATHER. Welcome to the flock.",
     },
   ];
 
