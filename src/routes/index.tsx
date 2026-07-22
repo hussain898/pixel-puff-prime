@@ -44,19 +44,19 @@ const TELEGRAM_URL = "https://t.me/Official_Feather";
 function FeatherSVG({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 120 260"
+      viewBox="0 0 100 320"
       className={className}
       aria-hidden="true"
     >
       <defs>
         <linearGradient id="featherGrad" x1="0.5" y1="0" x2="0.5" y2="1">
-          <stop offset="0" stopColor="#B6FF8C" />
-          <stop offset="0.3" stopColor="#00FF22" />
-          <stop offset="0.7" stopColor="#00C805" />
-          <stop offset="1" stopColor="#00660A" />
+          <stop offset="0" stopColor="#E1FFD4" />
+          <stop offset="0.25" stopColor="#7CFF6B" />
+          <stop offset="0.6" stopColor="#00C805" />
+          <stop offset="1" stopColor="#00520A" />
         </linearGradient>
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feGaussianBlur stdDeviation="4" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
             <feMergeNode in="blur" />
@@ -64,70 +64,57 @@ function FeatherSVG({ className = "" }: { className?: string }) {
           </feMerge>
         </filter>
       </defs>
-      {/* Vane left */}
+
+      {/* Curved feather silhouette — tapered top, wider mid, pointed quill bottom */}
       <path
         fill="url(#featherGrad)"
-        d="M60 10
-           C42 45 22 85 20 135
-           C18 165 26 190 44 210
-           L60 248
-           L60 10Z"
         opacity="0.95"
+        d="M50 12
+           C36 60 22 110 24 170
+           C25 205 34 235 46 258
+           L50 296
+           L54 258
+           C66 235 75 205 76 170
+           C78 110 64 60 50 12 Z"
       />
-      {/* Vane right */}
-      <path
-        fill="url(#featherGrad)"
-        d="M60 10
-           C78 45 98 85 100 135
-           C102 165 94 190 76 210
-           L60 248
-           L60 10Z"
-        opacity="0.95"
-      />
-      {/* Barbs */}
-      <g
-        stroke="#E1FFD4"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        opacity="0.65"
-        fill="none"
-      >
-        {/* Left barbs */}
-        <path d="M60 40 Q45 45 28 42" />
-        <path d="M60 55 Q42 62 24 60" />
-        <path d="M60 70 Q40 78 22 76" />
-        <path d="M60 85 Q38 95 20 94" />
-        <path d="M60 100 Q36 112 19 112" />
-        <path d="M60 115 Q35 129 18 130" />
-        <path d="M60 130 Q35 146 19 148" />
-        <path d="M60 145 Q36 162 22 166" />
-        <path d="M60 160 Q38 178 26 184" />
-        <path d="M60 175 Q42 192 33 200" />
-        {/* Right barbs */}
-        <path d="M60 40 Q75 45 92 42" />
-        <path d="M60 55 Q78 62 96 60" />
-        <path d="M60 70 Q80 78 98 76" />
-        <path d="M60 85 Q82 95 100 94" />
-        <path d="M60 100 Q84 112 101 112" />
-        <path d="M60 115 Q85 129 102 130" />
-        <path d="M60 130 Q85 146 101 148" />
-        <path d="M60 145 Q84 162 98 166" />
-        <path d="M60 160 Q82 178 94 184" />
-        <path d="M60 175 Q78 192 87 200" />
+
+      {/* Barbs — angled downward, following feather flow */}
+      <g stroke="#F0FFE6" strokeWidth="1" strokeLinecap="round" opacity="0.55" fill="none">
+        <path d="M50 40 Q40 46 30 52" />
+        <path d="M50 58 Q37 65 26 74" />
+        <path d="M49 76 Q35 84 23 96" />
+        <path d="M49 94 Q34 103 22 117" />
+        <path d="M48 112 Q33 122 22 138" />
+        <path d="M48 130 Q33 141 23 158" />
+        <path d="M48 148 Q34 160 26 177" />
+        <path d="M49 166 Q36 178 30 194" />
+        <path d="M49 184 Q39 196 36 210" />
+        <path d="M50 202 Q42 214 42 226" />
+        <path d="M50 40 Q60 46 70 52" />
+        <path d="M50 58 Q63 65 74 74" />
+        <path d="M51 76 Q65 84 77 96" />
+        <path d="M51 94 Q66 103 78 117" />
+        <path d="M52 112 Q67 122 78 138" />
+        <path d="M52 130 Q67 141 77 158" />
+        <path d="M52 148 Q66 160 74 177" />
+        <path d="M51 166 Q64 178 70 194" />
+        <path d="M51 184 Q61 196 64 210" />
+        <path d="M50 202 Q58 214 58 226" />
       </g>
+
       {/* Rachis (central shaft) */}
-      <rect
-        x="58.2"
-        y="6"
-        width="3.6"
-        height="244"
-        rx="1.8"
-        fill="#E1FFD4"
-        opacity="0.9"
+      <path
+        d="M50 10 C48 90 48 180 50 300"
+        stroke="#F5FFEC"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.95"
         filter="url(#glow)"
       />
+
       {/* Afterglow halo */}
-      <circle cx="60" cy="130" r="55" fill="url(#featherGrad)" opacity="0.08" filter="url(#glow)" />
+      <ellipse cx="50" cy="160" rx="42" ry="130" fill="url(#featherGrad)" opacity="0.08" filter="url(#glow)" />
     </svg>
   );
 }
