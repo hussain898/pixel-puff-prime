@@ -389,7 +389,7 @@ function Index() {
               </div>
               <p className="mt-3 text-[0.95rem] text-[#bcd8c1]">{m.body}</p>
               <div className="absolute -right-8 -bottom-8 opacity-10 transition group-hover:opacity-20">
-                <FeatherSVG className="w-32" />
+                <Logo className="w-32" />
               </div>
             </div>
           ))}
