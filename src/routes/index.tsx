@@ -38,6 +38,8 @@ export const Route = createFileRoute("/")({
 const CA = "0x72081aDC58bdb794b989d424a65948c16848600d";
 const DEX_URL =
   "https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b";
+const TWITTER_URL = "https://x.com/featherrhc?s=21";
+const TELEGRAM_URL = "https://t.me/Official_Feather";
 
 function FeatherSVG({ className = "" }: { className?: string }) {
   return (
@@ -500,7 +502,7 @@ function Index() {
         <p className="mt-4 tracking-wider text-muted-green">Take from the rich. Give to the poor.</p>
         <div className="my-8 flex flex-wrap justify-center gap-4">
           <a
-            href="https://x.com/FeatherRHC"
+            href={TWITTER_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-rh-green/30 px-5 py-2.5 text-sm font-semibold text-paper hover:border-rh-green hover:text-rh-green transition"
@@ -508,7 +510,9 @@ function Index() {
             𝕏 &nbsp;Twitter
           </a>
           <a
-            href="#"
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border border-rh-green/30 px-5 py-2.5 text-sm font-semibold text-paper hover:border-rh-green hover:text-rh-green transition"
           >
             ✈ &nbsp;Telegram
