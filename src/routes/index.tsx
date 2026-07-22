@@ -586,7 +586,7 @@ function Index() {
           </a>
         </div>
         <p className="text-xs text-muted-green/70">
-          © {new Date().getFullYear()} $FEATHER · Community-run. Not affiliated with Robinhood.
+          © {new Date().getFullYear()} $FEATHER · Community run. Not affiliated with Robinhood.
         </p>
       </footer>
     </div>
