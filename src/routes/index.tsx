@@ -1,5 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import logoAsset from "@/assets/feather-logo.png.asset.json";
+
+function Logo({ className = "" }: { className?: string }) {
+  return (
+    <img
+      src={logoAsset.url}
+      alt="$FEATHER logo"
+      className={className}
+      draggable={false}
+    />
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
