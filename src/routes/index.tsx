@@ -159,19 +159,7 @@ function FeatherSVG({ className = "" }: { className?: string }) {
 }
 
 function FallingFeathers() {
-  const feathers = useMemo(
-    () =>
-      Array.from({ length: 8 }).map((_, i) => ({
-        left: Math.random() * 100,
-        size: 16 + Math.random() * 30,
-        duration: 14 + Math.random() * 18,
-        delay: Math.random() * 16,
-        sway: 15 + Math.random() * 35,
-        swayDuration: 4 + Math.random() * 4,
-        key: i,
-      })),
-    [],
-  );
+  const feathers = FALLING_FEATHERS;
   return (
     <div className="pointer-events-none fixed inset-0 -z-[1] overflow-hidden">
       {feathers.map((f) => (
