@@ -293,131 +293,45 @@ function StatPill({ label, value, accent = false }: { label: string; value: stri
 }
 
 function LiveDexPanel({
-  pair,
-  lastUpdated,
-  isLoading,
-  hasError,
   compact = false,
 }: {
-  pair: DexPair | null;
-  lastUpdated: Date | null;
-  isLoading: boolean;
-  hasError: boolean;
+  pair?: DexPair | null;
+  lastUpdated?: Date | null;
+  isLoading?: boolean;
+  hasError?: boolean;
   compact?: boolean;
 }) {
-  const change = pair?.priceChange?.h24;
-  const isPositive = (change ?? 0) >= 0;
-  const buys = pair?.txns?.h24?.buys ?? 0;
-  const sells = pair?.txns?.h24?.sells ?? 0;
-  const points = buildSparklinePoints(pair, 560, compact ? 190 : 220);
-  const areaPath = `M ${points.split(" ")[0]} L ${points} L 542,${compact ? 184 : 214} L 18,${compact ? 184 : 214} Z`;
-
+  const embedUrl =
+    "https://dexscreener.com/robinhood/0x72d74dad7135d5e183a3d3fbe1e8358bbc143a9b?embed=1&theme=dark&trades=0&info=0";
   return (
     <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-[#041009]/90 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,200,5,0.18),transparent_48%)]" />
-      <div className="relative p-4 sm:p-5">
-        <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-rh-green">
-              Live Dexscreener Feed
-            </div>
-            <div className="mt-1 font-display text-2xl font-black text-paper sm:text-3xl">
-              {pair?.baseToken?.symbol ?? "FEATHER"}/{pair?.quoteToken?.symbol ?? "WETH"}
-            </div>
-            <div className="mt-1 text-xs uppercase tracking-[0.14em] text-muted-green">
-              {pair?.dexId ?? "Uniswap"} {pair?.labels?.[0] ? `· ${pair.labels[0]}` : ""}
-            </div>
-          </div>
-          <a
-            href={DEX_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/10 px-4 py-2 text-xs font-bold text-rh-green transition hover:bg-rh-green/20"
-          >
-            Dexscreener ↗
-          </a>
-        </div>
-
-        <div className="mt-5 grid gap-3 sm:grid-cols-4">
-          <StatPill label="Price" value={isLoading && !pair ? "Loading" : formatUsd(pair?.priceUsd, 8)} accent />
-          <StatPill label="24H" value={formatPercent(change)} accent={isPositive} />
-          <StatPill label="Market Cap" value={`$${formatCompact(pair?.marketCap ?? pair?.fdv)}`} />
-          <StatPill label="Liquidity" value={`$${formatCompact(pair?.liquidity?.usd)}`} />
-        </div>
-
-        <div className="mt-4 overflow-hidden rounded-xl border border-rh-green/20 bg-[#07110d]">
-          <svg
-            viewBox={`0 0 560 ${compact ? 190 : 220}`}
-            className={`h-[220px] w-full sm:h-[260px] ${compact ? "lg:h-[250px]" : "lg:h-[320px]"}`}
-            role="img"
-            aria-label="$FEATHER live market line"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <linearGradient id="liveLine" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="#E8B923" />
-                <stop offset="0.55" stopColor="#00C805" />
-                <stop offset="1" stopColor="#C8FF7B" />
-              </linearGradient>
-              <linearGradient id="liveArea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#00C805" stopOpacity="0.26" />
-                <stop offset="1" stopColor="#00C805" stopOpacity="0" />
-              </linearGradient>
-              <filter id="lineGlow" x="-20%" y="-80%" width="140%" height="260%">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-            {Array.from({ length: 7 }).map((_, i) => (
-              <line
-                key={`h-${i}`}
-                x1="0"
-                x2="560"
-                y1={18 + i * ((compact ? 154 : 184) / 6)}
-                y2={18 + i * ((compact ? 154 : 184) / 6)}
-                stroke="rgba(143,183,154,0.16)"
-                strokeWidth="1"
-              />
-            ))}
-            {Array.from({ length: 8 }).map((_, i) => (
-              <line
-                key={`v-${i}`}
-                y1="0"
-                y2={compact ? 190 : 220}
-                x1={i * 80}
-                x2={i * 80}
-                stroke="rgba(143,183,154,0.1)"
-                strokeWidth="1"
-              />
-            ))}
-            <path d={areaPath} fill="url(#liveArea)" />
-            <polyline points={points} fill="none" stroke="url(#liveLine)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" filter="url(#lineGlow)" />
-            <circle cx={points.split(" ").at(-1)?.split(",")[0]} cy={points.split(" ").at(-1)?.split(",")[1]} r="5" fill="#E8B923" />
-          </svg>
-        </div>
-
-        <div className="mt-4 grid gap-3 text-sm text-muted-green sm:grid-cols-3">
-          <div className="rounded-xl bg-black/20 px-4 py-3">
-            <span className="text-paper">24h Volume</span> ${formatCompact(pair?.volume?.h24)}
-          </div>
-          <div className="rounded-xl bg-black/20 px-4 py-3">
-            <span className="text-paper">24h Buys</span> {buys.toLocaleString()}
-          </div>
-          <div className="rounded-xl bg-black/20 px-4 py-3">
-            <span className="text-paper">24h Sells</span> {sells.toLocaleString()}
-          </div>
-        </div>
-
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-green">
-          <span className={hasError ? "text-gold-bright" : "text-rh-green"}>
-            {hasError ? "Reconnecting to Dexscreener" : "● Live"}
+      <div className="flex items-center justify-between gap-3 border-b border-rh-green/20 bg-black/40 px-4 py-2.5">
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 animate-pulse rounded-full bg-rh-green shadow-[0_0_8px_#00C805]" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-rh-green">
+            Live Dexscreener Chart
           </span>
-          <span>{lastUpdated ? `Updated ${lastUpdated.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}` : "Waiting for feed"}</span>
         </div>
+        <a
+          href={DEX_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] font-bold uppercase tracking-[0.14em] text-muted-green transition hover:text-rh-green"
+        >
+          Open ↗
+        </a>
       </div>
+      <iframe
+        src={embedUrl}
+        title="Dexscreener $FEATHER Live Chart"
+        className={`block w-full border-0 bg-[#041009] ${
+          compact
+            ? "h-[380px] sm:h-[440px] lg:h-[520px]"
+            : "h-[460px] sm:h-[520px] lg:h-[620px]"
+        }`}
+        allow="clipboard-write"
+        loading="lazy"
+      />
     </div>
   );
 }
