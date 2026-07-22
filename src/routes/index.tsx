@@ -607,10 +607,6 @@ function Index() {
               Robinhood created a new blockchain. We believe the feather has potential to become one
               of the defining cultural symbols of the Robinhood ecosystem.
             </p>
-            <p className="mb-6 font-display font-semibold text-gold-bright">
-              Through memes, art, community participation, and internet culture, $FEATHER exists to
-              celebrate that idea.
-            </p>
           </div>
           <div className="relative flex justify-center">
             <div className="absolute inset-0 -z-10 rounded-full bg-gradient-radial from-gold/20 via-transparent to-transparent blur-3xl" />
