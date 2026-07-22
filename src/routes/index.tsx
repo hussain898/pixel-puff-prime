@@ -176,6 +176,30 @@ function FallingFeathers() {
   );
 }
 
+function DisclaimerModal({ onContinue }: { onContinue: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-[#020805]/90 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-[520px] rounded-2xl border border-rh-green/40 bg-gradient-to-b from-[#0a1f12] to-[#03120a] p-6 sm:p-8 shadow-[0_0_60px_rgba(0,200,5,0.18)]">
+        <div className="mb-5 text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-rh-green/30 bg-rh-green/10 text-xl text-rh-green">
+            ⚠️
+          </div>
+          <h2 className="font-display text-2xl sm:text-3xl font-black text-paper">Disclaimer</h2>
+        </div>
+        <p className="mb-6 text-center text-sm sm:text-base leading-relaxed text-[#cfe7d2]">
+          $<span className="text-rh-green font-bold">FEATHER</span> is an independent, community created meme coin for entertainment and internet culture. It is not affiliated with, endorsed by, sponsored by, or connected to Robinhood Markets, Inc.
+        </p>
+        <button
+          onClick={onContinue}
+          className="w-full rounded-full bg-rh-green px-6 py-3 text-sm sm:text-base font-bold text-[#03120a] shadow-[0_10px_30px_rgba(0,200,5,0.35)] hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(0,200,5,0.45)] transition"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function Nav() {
   const links = [
     { href: "#legend", label: "The Legend" },
