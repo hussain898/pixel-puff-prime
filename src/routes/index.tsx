@@ -604,10 +604,6 @@ function Index() {
               <span className="text-rh-green">rallying around.</span>
             </h2>
             <p className="mb-4 text-[1.05rem] text-[#c4ddc8]">
-              Robinhood created a new blockchain. We believe its feather has the potential to become
-              one of the defining cultural symbols of the Robinhood ecosystem.
-            </p>
-            <p className="mb-4 text-[1.05rem] text-[#c4ddc8]">
               Robinhood created a new blockchain. We believe the feather has potential to become one
               of the defining cultural symbols of the Robinhood ecosystem.
             </p>
