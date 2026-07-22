@@ -1,5 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import logoAsset from "@/assets/feather-logo.png.asset.json";
+
+function Logo({ className = "" }: { className?: string }) {
+  return (
+    <img
+      src={logoAsset.url}
+      alt="$FEATHER logo"
+      className={className}
+      draggable={false}
+    />
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -114,7 +126,7 @@ function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-4 backdrop-blur-md bg-gradient-to-b from-[rgba(3,12,7,0.9)] to-transparent">
       <a href="#top" className="flex items-center gap-3 font-display font-black tracking-widest text-lg">
-        <FeatherSVG className="h-8 w-auto drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
+        <Logo className="h-8 w-auto drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
         <span>
           $<span className="text-rh-green [text-shadow:0_0_18px_rgba(0,200,5,0.7)]">FEATHER</span>
         </span>
@@ -231,7 +243,7 @@ function Index() {
           Live on Robinhood Chain
         </div>
 
-        <FeatherSVG className="animate-float mx-auto w-[min(230px,42vw)] drop-shadow-[0_12px_40px_rgba(0,200,5,0.5)]" />
+        <Logo className="animate-float mx-auto w-[min(230px,42vw)] drop-shadow-[0_12px_40px_rgba(0,200,5,0.5)]" />
 
         <h1 className="mt-2 font-display font-black leading-[0.98] tracking-wide text-[clamp(2.6rem,8vw,6.2rem)]">
           THE PEOPLE'S
@@ -321,7 +333,7 @@ function Index() {
           </div>
           <div className="relative flex justify-center">
             <div className="absolute inset-0 -z-10 rounded-full bg-gradient-radial from-gold/20 via-transparent to-transparent blur-3xl" />
-            <FeatherSVG className="animate-float w-[min(340px,70vw)] drop-shadow-[0_10px_40px_rgba(232,185,35,0.35)]" />
+            <Logo className="animate-float w-[min(340px,70vw)] drop-shadow-[0_10px_40px_rgba(232,185,35,0.35)]" />
           </div>
         </div>
       </section>
@@ -377,7 +389,7 @@ function Index() {
               </div>
               <p className="mt-3 text-[0.95rem] text-[#bcd8c1]">{m.body}</p>
               <div className="absolute -right-8 -bottom-8 opacity-10 transition group-hover:opacity-20">
-                <FeatherSVG className="w-32" />
+                <Logo className="w-32" />
               </div>
             </div>
           ))}
@@ -476,7 +488,7 @@ function Index() {
 
       {/* FOOTER */}
       <footer id="community" className="px-[6vw] py-16 text-center">
-        <FeatherSVG className="mx-auto w-14 opacity-70" />
+        <Logo className="mx-auto w-14 opacity-70" />
         <p className="mt-4 tracking-wider text-muted-green">Take from the rich. Give to the poor.</p>
         <div className="my-8 flex flex-wrap justify-center gap-4">
           <a
