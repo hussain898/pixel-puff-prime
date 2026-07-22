@@ -502,7 +502,7 @@ function Index() {
         <p className="mt-4 tracking-wider text-muted-green">Take from the rich. Give to the poor.</p>
         <div className="my-8 flex flex-wrap justify-center gap-4">
           <a
-            href="https://x.com/FeatherRHC"
+            href={TWITTER_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full border border-rh-green/30 px-5 py-2.5 text-sm font-semibold text-paper hover:border-rh-green hover:text-rh-green transition"
@@ -510,7 +510,9 @@ function Index() {
             𝕏 &nbsp;Twitter
           </a>
           <a
-            href="#"
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full border border-rh-green/30 px-5 py-2.5 text-sm font-semibold text-paper hover:border-rh-green hover:text-rh-green transition"
           >
             ✈ &nbsp;Telegram
