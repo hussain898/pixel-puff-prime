@@ -44,40 +44,90 @@ const TELEGRAM_URL = "https://t.me/Official_Feather";
 function FeatherSVG({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 120 230"
+      viewBox="0 0 120 260"
       className={className}
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id="fg" x1="0" y1="0" x2=".4" y2="1">
-          <stop offset="0" stopColor="#8CFF7A" />
-          <stop offset=".45" stopColor="#00C805" />
-          <stop offset="1" stopColor="#007a09" />
+        <linearGradient id="featherGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+          <stop offset="0" stopColor="#B6FF8C" />
+          <stop offset="0.3" stopColor="#00FF22" />
+          <stop offset="0.7" stopColor="#00C805" />
+          <stop offset="1" stopColor="#00660A" />
         </linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
+      {/* Vane left */}
       <path
-        fill="url(#fg)"
-        d="M60 6 C44 40 30 78 30 122 c0 30 8 56 22 82 l8 14 8-14 c14-26 22-52 22-82 0-44-14-82-30-116z"
+        fill="url(#featherGrad)"
+        d="M60 10
+           C42 45 22 85 20 135
+           C18 165 26 190 44 210
+           L60 248
+           L60 10Z"
+        opacity="0.95"
       />
-      <g stroke="#054d13" strokeWidth="2.4" strokeLinecap="round" opacity=".55">
-        <line x1="60" y1="40" x2="78" y2="34" />
-        <line x1="60" y1="60" x2="82" y2="56" />
-        <line x1="60" y1="80" x2="85" y2="78" />
-        <line x1="60" y1="100" x2="86" y2="100" />
-        <line x1="60" y1="120" x2="85" y2="123" />
-        <line x1="60" y1="140" x2="82" y2="146" />
-        <line x1="60" y1="160" x2="77" y2="168" />
-        <line x1="60" y1="180" x2="71" y2="190" />
-        <line x1="60" y1="40" x2="42" y2="34" />
-        <line x1="60" y1="60" x2="38" y2="56" />
-        <line x1="60" y1="80" x2="35" y2="78" />
-        <line x1="60" y1="100" x2="34" y2="100" />
-        <line x1="60" y1="120" x2="35" y2="123" />
-        <line x1="60" y1="140" x2="38" y2="146" />
-        <line x1="60" y1="160" x2="43" y2="168" />
-        <line x1="60" y1="180" x2="49" y2="190" />
+      {/* Vane right */}
+      <path
+        fill="url(#featherGrad)"
+        d="M60 10
+           C78 45 98 85 100 135
+           C102 165 94 190 76 210
+           L60 248
+           L60 10Z"
+        opacity="0.95"
+      />
+      {/* Barbs */}
+      <g
+        stroke="#E1FFD4"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        opacity="0.65"
+        fill="none"
+      >
+        {/* Left barbs */}
+        <path d="M60 40 Q45 45 28 42" />
+        <path d="M60 55 Q42 62 24 60" />
+        <path d="M60 70 Q40 78 22 76" />
+        <path d="M60 85 Q38 95 20 94" />
+        <path d="M60 100 Q36 112 19 112" />
+        <path d="M60 115 Q35 129 18 130" />
+        <path d="M60 130 Q35 146 19 148" />
+        <path d="M60 145 Q36 162 22 166" />
+        <path d="M60 160 Q38 178 26 184" />
+        <path d="M60 175 Q42 192 33 200" />
+        {/* Right barbs */}
+        <path d="M60 40 Q75 45 92 42" />
+        <path d="M60 55 Q78 62 96 60" />
+        <path d="M60 70 Q80 78 98 76" />
+        <path d="M60 85 Q82 95 100 94" />
+        <path d="M60 100 Q84 112 101 112" />
+        <path d="M60 115 Q85 129 102 130" />
+        <path d="M60 130 Q85 146 101 148" />
+        <path d="M60 145 Q84 162 98 166" />
+        <path d="M60 160 Q82 178 94 184" />
+        <path d="M60 175 Q78 192 87 200" />
       </g>
-      <rect x="58.4" y="26" width="3.2" height="196" rx="1.6" fill="#eafff0" opacity=".85" />
+      {/* Rachis (central shaft) */}
+      <rect
+        x="58.2"
+        y="6"
+        width="3.6"
+        height="244"
+        rx="1.8"
+        fill="#E1FFD4"
+        opacity="0.9"
+        filter="url(#glow)"
+      />
+      {/* Afterglow halo */}
+      <circle cx="60" cy="130" r="55" fill="url(#featherGrad)" opacity="0.08" filter="url(#glow)" />
     </svg>
   );
 }
@@ -85,12 +135,13 @@ function FeatherSVG({ className = "" }: { className?: string }) {
 function FallingFeathers() {
   const feathers = useMemo(
     () =>
-      Array.from({ length: 14 }).map((_, i) => ({
+      Array.from({ length: 20 }).map((_, i) => ({
         left: Math.random() * 100,
-        size: 14 + Math.random() * 26,
-        duration: 12 + Math.random() * 14,
-        delay: Math.random() * 12,
-        rotate: Math.random() * 60 - 30,
+        size: 16 + Math.random() * 30,
+        duration: 14 + Math.random() * 18,
+        delay: Math.random() * 16,
+        sway: 15 + Math.random() * 35,
+        swayDuration: 4 + Math.random() * 4,
         key: i,
       })),
     [],
@@ -100,17 +151,25 @@ function FallingFeathers() {
       {feathers.map((f) => (
         <div
           key={f.key}
-          className="animate-fall absolute -top-10 opacity-70"
+          className="absolute -top-16 animate-fall"
           style={{
             left: `${f.left}%`,
             width: `${f.size}px`,
             animationDuration: `${f.duration}s`,
             animationDelay: `-${f.delay}s`,
-            transform: `rotate(${f.rotate}deg)`,
-            filter: "drop-shadow(0 0 7px rgba(0,200,5,.55))",
+            filter: "drop-shadow(0 0 12px rgba(0,255,34,.85)) drop-shadow(0 0 24px rgba(0,200,5,.55))",
           }}
         >
-          <FeatherSVG className="w-full h-auto" />
+          <div
+            className="animate-sway"
+            style={{
+              animationDuration: `${f.swayDuration}s`,
+              animationDelay: `-${f.delay}s`,
+              transform: `translateX(${f.sway}px)`,
+            }}
+          >
+            <FeatherSVG className="w-full h-auto" />
+          </div>
         </div>
       ))}
     </div>
