@@ -185,10 +185,10 @@ function Nav() {
     { href: "#community", label: "Community" },
   ];
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5vw] py-4 backdrop-blur-md bg-gradient-to-b from-[rgba(3,12,7,0.9)] to-transparent">
-      <a href="#top" className="flex items-center gap-3 font-display font-black tracking-widest text-lg">
-        <Logo className="h-8 w-auto drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
-        <span>
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-2 px-4 sm:px-[5vw] py-3 sm:py-4 backdrop-blur-md bg-gradient-to-b from-[rgba(3,12,7,0.9)] to-transparent">
+      <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3 font-display font-black tracking-widest text-base sm:text-lg">
+        <Logo className="h-7 sm:h-8 w-auto shrink-0 drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
+        <span className="truncate">
           $<span className="text-rh-green [text-shadow:0_0_18px_rgba(0,200,5,0.7)]">FEATHER</span>
         </span>
       </a>
@@ -205,9 +205,9 @@ function Nav() {
       </div>
       <a
         href="#buy"
-        className="inline-flex items-center gap-2 rounded-full bg-rh-green px-5 py-2.5 text-sm font-bold text-[#03120a] shadow-[0_0_0_rgba(0,200,5,0.6)] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,200,5,0.45)] transition"
+        className="shrink-0 inline-flex items-center gap-2 rounded-full bg-rh-green px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-[#03120a] shadow-[0_0_0_rgba(0,200,5,0.6)] hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(0,200,5,0.45)] transition whitespace-nowrap"
       >
-        Buy $FEATHER
+        Buy <span className="hidden sm:inline">$FEATHER</span>
       </a>
     </nav>
   );
@@ -289,7 +289,7 @@ function Index() {
   ];
 
   return (
-    <div id="top" className="relative min-h-screen">
+    <div id="top" className="relative min-h-screen overflow-x-hidden">
       {/* ambient backgrounds */}
       <div className="fixed inset-0 -z-[2] bg-hero-radial" />
       <div className="fixed inset-0 -z-[1] bg-grid-glow opacity-[0.14] pointer-events-none" />
@@ -336,14 +336,14 @@ function Index() {
           </a>
         </div>
 
-        <div className="mt-8 inline-flex max-w-[92vw] items-center gap-3 rounded-xl border border-dashed border-rh-green/45 bg-black/40 px-4 py-3">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-rh-green">CA</span>
-          <code className="max-w-[46vw] overflow-hidden text-ellipsis whitespace-nowrap text-[13.5px] text-paper/90">
+        <div className="mt-8 flex w-full max-w-[92vw] items-center gap-2 sm:gap-3 rounded-xl border border-dashed border-rh-green/45 bg-black/40 px-3 sm:px-4 py-3 sm:w-auto">
+          <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-rh-green">CA</span>
+          <code className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[12px] sm:text-[13.5px] text-paper/90">
             {CA}
           </code>
           <button
             onClick={copyCA}
-            className="rounded-md bg-rh-green px-3 py-1.5 text-xs font-bold text-[#03120a] hover:brightness-110"
+            className="shrink-0 rounded-md bg-rh-green px-3 py-1.5 text-xs font-bold text-[#03120a] hover:brightness-110"
           >
             {copied ? "COPIED" : "COPY"}
           </button>
