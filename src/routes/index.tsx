@@ -238,6 +238,7 @@ function Nav() {
 }
 
 function Index() {
+  const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [copied, setCopied] = useState(false);
   useEffect(() => {
     if (!copied) return;
