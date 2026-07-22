@@ -675,9 +675,6 @@ function Index() {
 
       {/* TOKENOMICS */}
       <section id="tokenomics" className="mx-auto max-w-[1200px] px-[6vw] py-24 text-center">
-        <div className="mb-3 text-[13px] font-bold uppercase tracking-[0.25em] text-rh-green">
-          Tokenomics
-        </div>
         <h2 className="mb-6 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
           Loot, split fairly.
         </h2>
