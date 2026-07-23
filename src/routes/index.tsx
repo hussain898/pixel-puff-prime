@@ -769,21 +769,8 @@ function Index() {
       </section>
 
       {/* CTA BAND */}
-      <section className="border-y border-rh-green/25 bg-gradient-to-b from-rh-green/[0.10] to-black/20 py-20 text-center">
-        <div className="mx-auto max-w-[800px] px-[6vw]">
-          <h2 className="mb-3 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
-            The rich had their turn.
-          </h2>
-          <p className="mx-auto mb-8 max-w-[600px] text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
-            Now it's ours. Pick up a feather and ride with the people's coin.
-          </p>
-          <a
-            href="#buy"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-gold-bright to-gold px-8 py-4 text-lg font-bold text-[#241a00] shadow-[0_10px_30px_rgba(232,185,35,0.4)] hover:-translate-y-0.5 transition"
-          >
-            🪶 Buy $FEATHER
-          </a>
-        </div>
+      <section className="border-y border-rh-green/25 bg-gradient-to-b from-rh-green/[0.10] to-black/20 py-16">
+        <TweetSlider />
       </section>
 
       {/* FOOTER */}
