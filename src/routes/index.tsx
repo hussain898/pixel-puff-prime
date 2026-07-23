@@ -448,34 +448,37 @@ function TweetSlider() {
             </div>
           ))}
         </div>
+      </div>
 
+      <div className="mt-5 flex items-center justify-center gap-4">
         <button
           onClick={() => go(-1)}
           aria-label="Previous"
-          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-rh-green/40 bg-black/60 px-3 py-2 text-rh-green backdrop-blur hover:bg-rh-green/20 transition"
+          className="rounded-full border border-rh-green/40 bg-black/60 px-4 py-2 text-lg text-rh-green hover:bg-rh-green/20 transition"
         >
           ‹
         </button>
+
+        <div className="flex items-center gap-2">
+          {TWEET_SLIDES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setI(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2 rounded-full transition-all ${
+                idx === i ? "w-8 bg-rh-green" : "w-2 bg-rh-green/30"
+              }`}
+            />
+          ))}
+        </div>
+
         <button
           onClick={() => go(1)}
           aria-label="Next"
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-rh-green/40 bg-black/60 px-3 py-2 text-rh-green backdrop-blur hover:bg-rh-green/20 transition"
+          className="rounded-full border border-rh-green/40 bg-black/60 px-4 py-2 text-lg text-rh-green hover:bg-rh-green/20 transition"
         >
           ›
         </button>
-      </div>
-
-      <div className="mt-4 flex justify-center gap-2">
-        {TWEET_SLIDES.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setI(idx)}
-            aria-label={`Go to slide ${idx + 1}`}
-            className={`h-2 rounded-full transition-all ${
-              idx === i ? "w-8 bg-rh-green" : "w-2 bg-rh-green/30"
-            }`}
-          />
-        ))}
       </div>
     </div>
   );
