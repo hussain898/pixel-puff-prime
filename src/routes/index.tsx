@@ -682,8 +682,7 @@ function Index() {
           TOKENOMICS
         </h2>
         <p className="mx-auto max-w-[720px] text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
-          No arrows in the back. Zero tax, liquidity burned, contract renounced. The way an outlaw's
-          supposed to run it.
+          Community Takeover. Zero tax, liquidity burned, contract renounced.
         </p>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
