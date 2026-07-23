@@ -682,7 +682,7 @@ function Index() {
           TOKENOMICS
         </h2>
         <p className="mx-auto max-w-[720px] text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
-          Community Takeover. Zero tax, liquidity burned, contract renounced.
+          COMMUNITY TAKEOVER. ZERO TAX, LIQUIDITY BURNED, CONTRACT RENOUNCED.
         </p>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
