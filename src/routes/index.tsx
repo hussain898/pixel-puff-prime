@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logoAsset from "@/assets/feather-logo.png.asset.json";
+import tweet1Asset from "@/assets/tweet-feather.jpg.asset.json";
+import tweet2Asset from "@/assets/tweet-fur-feather.jpg.asset.json";
 
 function Logo({ className = "" }: { className?: string }) {
   return (
@@ -415,6 +417,71 @@ function Nav() {
   );
 }
 
+const TWEET_SLIDES = [tweet1Asset.url, tweet2Asset.url];
+
+function TweetSlider() {
+  const [i, setI] = useState(0);
+  const n = TWEET_SLIDES.length;
+  const go = (d: number) => setI((p) => (p + d + n) % n);
+
+  return (
+    <div className="mx-auto w-full max-w-[900px] px-[6vw]">
+      <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-black shadow-[0_10px_40px_rgba(0,200,120,0.15)]">
+        <div
+          className="flex will-change-transform"
+          style={{
+            transform: `translate3d(-${i * 100}%,0,0)`,
+            transition: "transform 320ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
+        >
+          {TWEET_SLIDES.map((src, idx) => (
+            <div key={src} className="w-full shrink-0">
+              <img
+                src={src}
+                alt={`Tweet ${idx + 1}`}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                draggable={false}
+                className="block h-auto w-full select-none"
+              />
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={() => go(-1)}
+          aria-label="Previous"
+          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-rh-green/40 bg-black/60 px-3 py-2 text-rh-green backdrop-blur hover:bg-rh-green/20 transition"
+        >
+          ‹
+        </button>
+        <button
+          onClick={() => go(1)}
+          aria-label="Next"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-rh-green/40 bg-black/60 px-3 py-2 text-rh-green backdrop-blur hover:bg-rh-green/20 transition"
+        >
+          ›
+        </button>
+      </div>
+
+      <div className="mt-4 flex justify-center gap-2">
+        {TWEET_SLIDES.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setI(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-2 rounded-full transition-all ${
+              idx === i ? "w-8 bg-rh-green" : "w-2 bg-rh-green/30"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
 function Index() {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -767,21 +834,8 @@ function Index() {
       </section>
 
       {/* CTA BAND */}
-      <section className="border-y border-rh-green/25 bg-gradient-to-b from-rh-green/[0.10] to-black/20 py-20 text-center">
-        <div className="mx-auto max-w-[800px] px-[6vw]">
-          <h2 className="mb-3 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
-            The rich had their turn.
-          </h2>
-          <p className="mx-auto mb-8 max-w-[600px] text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
-            Now it's ours. Pick up a feather and ride with the people's coin.
-          </p>
-          <a
-            href="#buy"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-b from-gold-bright to-gold px-8 py-4 text-lg font-bold text-[#241a00] shadow-[0_10px_30px_rgba(232,185,35,0.4)] hover:-translate-y-0.5 transition"
-          >
-            🪶 Buy $FEATHER
-          </a>
-        </div>
+      <section className="border-y border-rh-green/25 bg-gradient-to-b from-rh-green/[0.10] to-black/20 py-16">
+        <TweetSlider />
       </section>
 
       {/* FOOTER */}
