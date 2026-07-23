@@ -675,8 +675,11 @@ function Index() {
 
       {/* TOKENOMICS */}
       <section id="tokenomics" className="mx-auto max-w-[1200px] px-[6vw] py-24 text-center">
-        <h2 className="mb-6 font-display text-[clamp(2rem,5vw,3.4rem)] font-extrabold leading-[1.05]">
-          Loot, split fairly.
+        <h2
+          className="mb-6 font-display text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.05] text-rh-green"
+          style={{ textShadow: "0 0 18px rgba(0,200,5,0.55), 0 0 46px rgba(0,200,5,0.32)" }}
+        >
+          TOKENOMICS
         </h2>
         <p className="mx-auto max-w-[720px] text-[clamp(1.05rem,2vw,1.2rem)] text-[#cfe7d2] opacity-90">
           No arrows in the back. Zero tax, liquidity burned, contract renounced. The way an outlaw's
