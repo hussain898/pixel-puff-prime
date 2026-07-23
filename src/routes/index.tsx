@@ -513,7 +513,7 @@ function Index() {
           {/* Left: copy + CTAs + CA */}
           <div className="text-center lg:text-left">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-rh-green/40 bg-rh-green/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-rh-green">
-              <span className="animate-pulse-dot h-1.5 w-1.5 rounded-full bg-rh-green shadow-[0_0_10px_var(--rh-green)]" />
+              <span className="animate-pulse-dot h-1.5 w-1.5 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.9)]" />
               Live on Robinhood Chain
             </div>
 
