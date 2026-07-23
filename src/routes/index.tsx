@@ -787,7 +787,7 @@ function Index() {
       {/* FOOTER */}
       <footer id="community" className="px-[6vw] py-16 text-center">
         <Logo className="mx-auto w-14 opacity-70" />
-        <p className="mt-4 tracking-wider text-muted-green">Take from the rich. Give to the poor.</p>
+        <p className="mt-4 tracking-wider text-muted-green">Socials</p>
         <div className="my-8 flex flex-wrap justify-center gap-4">
           <a
             href={TWITTER_URL}
