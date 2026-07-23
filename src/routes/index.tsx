@@ -751,6 +751,18 @@ function Index() {
             📈 Dexscreener
           </a>
         </div>
+        <div className="mx-auto mt-6 flex w-full max-w-[92vw] items-center gap-2 sm:gap-3 rounded-xl border border-dashed border-rh-green/45 bg-black/40 px-3 sm:px-4 py-3 sm:max-w-md">
+          <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-rh-green">CA</span>
+          <code className="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[12px] sm:text-[13.5px] text-paper/90">
+            {CA}
+          </code>
+          <button
+            onClick={copyCA}
+            className="shrink-0 rounded-md bg-rh-green px-3 py-1.5 text-xs font-bold text-[#03120a] hover:brightness-110"
+          >
+            {copied ? "COPIED" : "COPY"}
+          </button>
+        </div>
       </section>
 
       {/* CTA BAND */}
