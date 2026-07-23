@@ -307,7 +307,7 @@ function LiveDexPanel({
     <div className="relative overflow-hidden rounded-2xl border border-rh-green/30 bg-[#041009]/90 shadow-[0_0_60px_-15px_rgba(34,197,94,0.4)]">
       <div className="flex items-center justify-between gap-3 border-b border-rh-green/20 bg-black/40 px-4 py-2.5">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-rh-green shadow-[0_0_8px_#00C805]" />
+          <span className="h-2 w-2 animate-pulse rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.9)]" />
           <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-rh-green">
             Live Dexscreener Chart
           </span>
