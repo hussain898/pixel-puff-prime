@@ -765,7 +765,7 @@ function Index() {
               key={t.cap}
               className="rounded-2xl border border-rh-green/25 bg-gradient-to-b from-rh-green/[0.08] to-black/25 p-8 transition hover:-translate-y-1.5 hover:border-rh-green hover:shadow-[0_16px_40px_rgba(0,200,5,0.18)]"
             >
-              <div className="font-display text-[2.4rem] font-black text-gold-bright">{t.num}</div>
+              <div className={`font-display text-[2.4rem] font-black ${t.num === "✔" ? "text-rh-green" : "text-gold-bright"}`}>{t.num}</div>
               <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-green">
                 {t.cap}
               </div>
