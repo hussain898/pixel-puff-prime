@@ -390,8 +390,8 @@ function Nav() {
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between gap-2 px-4 sm:px-[5vw] py-3 sm:py-4 backdrop-blur-md bg-gradient-to-b from-[rgba(3,12,7,0.9)] to-transparent">
       <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3 font-display font-black tracking-widest text-base sm:text-lg">
         <Logo className="h-7 sm:h-8 w-auto shrink-0 drop-shadow-[0_0_10px_rgba(0,200,5,0.7)]" />
-        <span className="truncate">
-          $<span className="text-rh-green [text-shadow:0_0_18px_rgba(0,200,5,0.7)]">FEATHER</span>
+        <span className="truncate text-white">
+          $FEATHER
         </span>
       </a>
       <div className="hidden md:flex items-center gap-7">
