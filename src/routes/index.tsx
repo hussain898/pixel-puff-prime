@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import logoAsset from "@/assets/feather-logo.png.asset.json";
+import tweet1Asset from "@/assets/tweet-feather.jpg.asset.json";
+import tweet2Asset from "@/assets/tweet-fur-feather.jpg.asset.json";
 
 function Logo({ className = "" }: { className?: string }) {
   return (
